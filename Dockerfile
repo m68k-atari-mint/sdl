@@ -2,14 +2,12 @@ ARG BUILD_DIR=/build
 
 FROM mikrosk/m68k-atari-mint-gemlib:master as gemlib
 FROM mikrosk/m68k-atari-mint-ldg:master as ldg
-FROM mikrosk/m68k-atari-mint-zlib:master as zlib
 
 FROM mikrosk/m68k-atari-mint-base:master as base
 
 WORKDIR /src
 COPY --from=gemlib ${SYSROOT_DIR} ${SYSROOT_DIR}/
 COPY --from=ldg ${SYSROOT_DIR} ${SYSROOT_DIR}/
-COPY --from=zlib ${SYSROOT_DIR} ${SYSROOT_DIR}/
 
 # renew the arguments
 ARG BUILD_DIR
